@@ -1,5 +1,6 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
+import Catalog from './catalog';
 
 class Ecommerce extends Component {
 
@@ -16,7 +17,7 @@ class Ecommerce extends Component {
     const {route} = this.props;
     return (
       <div className='shopping-cart'>
-        { this.getComponent(route) }
+        <Catalog/>
       </div>
     );
   }
