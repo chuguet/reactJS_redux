@@ -4,8 +4,15 @@ import CatalogItem from './catalog_item';
 import { connect } from 'react-redux';
 import { products } from '../../data/shopping_cart';
 import { saveProducts } from '../../modules/catalog';
+import { addToCart } from '../../modules/cart';
+import { goToCart } from '../../modules/route';
 
 class Catalog extends Component {
+
+  constructor(props) {
+    super(props);
+    this.addToCart = this.addToCart.bind(this);
+  }
 
   componentDidMount() {
     setTimeout(() => {
@@ -14,7 +21,16 @@ class Catalog extends Component {
   }
 
   addToCart(product) {
-    alert(product.name);
+    this.props.dispatch(addToCart(product.id));
+    this.props.dispatch(goToCart());
+  }
+
+  removeFromCart() {
+
+  }
+
+  changeQuantity() {
+
   }
 
   renderProducts() {

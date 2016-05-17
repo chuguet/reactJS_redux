@@ -1,13 +1,16 @@
 import React, { Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import Catalog from './catalog';
+import Cart from './cart';
 
 class Ecommerce extends Component {
 
   getComponent(route) {
     switch(route){
       case 'catalog':
-        return 'catalog';
+        return <Catalog/>;
+      case 'cart':
+        return <Cart/>;
       default:
         return 'catalog';
     }
@@ -17,7 +20,7 @@ class Ecommerce extends Component {
     const {route} = this.props;
     return (
       <div className='shopping-cart'>
-        <Catalog/>
+        { this.getComponent(route) }
       </div>
     );
   }
